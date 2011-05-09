@@ -28,6 +28,21 @@
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
+  
+  <link rel="stylesheet" href="jquery.instagram.css"  type="text/css" />
+  
+  <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+  <script src="https://github.com/potomak/jquery-instagram/raw/master/jquery.instagram.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      $(".instagram").instagram({
+        hash: 'hfarm',
+        show: 5,
+        clientId: 'baee48560b984845974f6b85a07bf7d9'
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -49,7 +64,9 @@
       Instagram jQuery plugin
     </div>
 
-    <p>A simple jQuery plugin to show a list of Instagram photos.</p><h2>License</h2>
+    <p>A simple jQuery plugin to show a list of Instagram photos.</p>
+<div class="instagram"></div>
+<h2>License</h2>
 <pre>Copyright (c) 2011 Giovanni Cappellotto, http://www.focustheweb.com/
 
 Permission is hereby granted, free of charge, to any person obtaining
