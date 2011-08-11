@@ -4,6 +4,7 @@
         apiEndpoint = "https://api.instagram.com/v1",
         settings = {
           hash: null,
+          search: null,
           accessToken: null,
           clientId: null,
           show: null,
@@ -37,6 +38,14 @@
       
       if(settings.hash != null) {
         url += "/tags/" + settings.hash + "/media/recent";
+      }
+      else if(settings.search != null) {
+        url += "/media/search";
+        params.lat = settings.search.lat;
+        params.lng = settings.search.lng;
+        settings.search.max_timestamp != null && (params.max_timestamp = settings.search.max_timestamp);
+        settings.search.min_timestamp != null && (params.min_timestamp = settings.search.min_timestamp);
+        settings.search.distance != null && (params.distance = settings.search.distance);
       }
       else {
         url += "/media/popular";
