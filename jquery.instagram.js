@@ -3,15 +3,16 @@
     var that = this,
         apiEndpoint = "https://api.instagram.com/v1",
         settings = {
-          hash: null,
-          search: null,
-          accessToken: null,
-          clientId: null,
-          show: null,
-          onLoad: null,
-          onComplete: null,
-          maxId: null,
-          minId: null
+            hash: null
+          , search: null
+          , accessToken: null
+          , clientId: null
+          , show: null
+          , onLoad: null
+          , onComplete: null
+          , maxId: null
+          , minId: null
+          , next_url: null
         };
         
     options && $.extend(settings, options);
@@ -33,9 +34,13 @@
     }
     
     function composeRequestURL() {
+
       var url = apiEndpoint,
           params = {};
       
+      if (settings.next_url != null)
+      	return settings.next_url
+
       if(settings.hash != null) {
         url += "/tags/" + settings.hash + "/media/recent";
       }
@@ -53,8 +58,10 @@
       
       settings.accessToken != null && (params.access_token = settings.accessToken);
       settings.clientId != null && (params.client_id = settings.clientId);
+      settings.minId != null && (params.min_id = settings.minId);
+      settings.maxId != null && (params.max_id = settings.maxId);
 
-      url += "?" + $.param(params);
+      url += "?" + $.param(params)
       
       return url;
     }
@@ -67,13 +74,14 @@
       cache: false,
       url: composeRequestURL(),
       success: function(res) {
-        settings.onComplete != null && typeof settings.onComplete == 'function' && settings.onComplete(res.data);
         
         var limit = settings.show == null ? res.data.length : settings.show;
         
         for(var i = 0; i < limit; i++) {
           that.append(createPhotoElement(res.data[i]));
         }
+
+        settings.onComplete != null && typeof settings.onComplete == 'function' && settings.onComplete(res.data, res);
       }
     });
     
