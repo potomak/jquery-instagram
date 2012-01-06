@@ -14,12 +14,56 @@ Insert an empty `div` in the code
 
 Run the plugin
 
-    $(document).ready(function() {
+    $(function() {
       $(".instagram").instagram({
-        hash: 'hfarm',
-        clientId: 'your-client-id-here'
+          hash: 'hfarm'
+        , clientId: 'your-client-id-here'
       });
     });
+
+An alternative method. This expects a div with class `instagram` and a `button`. When clicked, the button paginates through the search, allowing you to show more than the API limit of 20 photos.
+
+
+HTML
+	
+	<div class="instagram"></div>
+	<button>More</button>
+
+JS
+
+	$(function(){
+		var
+			  insta_container = $(".instagram")
+			, insta_next_url
+
+		 insta_container.instagram({
+			  hash: 'hipster'
+			, clientId : 'xxxxxxx'
+			, show : 18
+			, onComplete : function (photos, data) {
+				insta_next_url = data.pagination.next_url
+			}
+		 })
+
+		$('button').on('click', function(){
+			var 
+				  button = $(this)
+				, text = button.text()
+			
+			if (button.text() != 'Loading…'){
+				button.text('Loading…')
+				insta_container.instagram({
+					  next_url : insta_next_url
+					, show : 18
+					, onComplete : function(photos, data) {
+						insta_next_url = data.pagination.next_url
+						button.text(text)
+					}
+				})
+			}		
+		}) 
+	});
+
 
 ## Options
 
@@ -55,6 +99,13 @@ Type: `Number`
 
 Default: `null`
 
+### next_url
+You can populate this with the next url object (`pagination.next_url`) returned by the Instagram API.
+
+Type: `url`
+
+Default: `null`
+
 ### onLoad
 
 Called just before making the request to instagram API.
@@ -74,3 +125,5 @@ Default: `null`
 ## Acknowledgements
 
 Thanks to [@dpvitt](http://twitter.com/dpvitt) for the initial implementation.
+
+Thanks to [@photomak](https://github.com/potomak/jquery-instagram) for the v0.2
