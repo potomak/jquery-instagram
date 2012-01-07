@@ -6,64 +6,67 @@ A simple jQuery plugin to show a list of Instagram photos.
 
 Import the script
 
-    <script src="jquery.instagram.js"></script>
+```html
+<script src="jquery.instagram.js"></script>
+```
 
 Insert an empty `div` in the code
 
-    <div class="instagram"></div>
+```html
+<div class="instagram"></div>
+```
 
 Run the plugin
 
-    $(function() {
-      $(".instagram").instagram({
-          hash: 'hfarm'
-        , clientId: 'your-client-id-here'
-      });
-    });
+```javascript
+$(function() {
+  $(".instagram").instagram({
+      hash: 'hfarm'
+    , clientId: 'your-client-id-here'
+  });
+});
+```
 
 An alternative method. This expects a div with class `instagram` and a `button`. When clicked, the button paginates through the search, allowing you to show more than the API limit of 20 photos.
 
+```html
+<div class="instagram"></div>
+<button>More</button>
+```
+```javascript
+$(function(){
+  var
+    insta_container = $(".instagram")
+  , insta_next_url
 
-HTML
-	
-	<div class="instagram"></div>
-	<button>More</button>
+  insta_container.instagram({
+      hash: 'hipster'
+    , clientId : 'xxxxxxx'
+    , show : 18
+    , onComplete : function (photos, data) {
+      insta_next_url = data.pagination.next_url
+    }
+  })
 
-JS
+  $('button').on('click', function(){
+    var 
+      button = $(this)
+    , text = button.text()
 
-	$(function(){
-		var
-			  insta_container = $(".instagram")
-			, insta_next_url
-
-		 insta_container.instagram({
-			  hash: 'hipster'
-			, clientId : 'xxxxxxx'
-			, show : 18
-			, onComplete : function (photos, data) {
-				insta_next_url = data.pagination.next_url
-			}
-		 })
-
-		$('button').on('click', function(){
-			var 
-				  button = $(this)
-				, text = button.text()
-			
-			if (button.text() != 'Loading…'){
-				button.text('Loading…')
-				insta_container.instagram({
-					  next_url : insta_next_url
-					, show : 18
-					, onComplete : function(photos, data) {
-						insta_next_url = data.pagination.next_url
-						button.text(text)
-					}
-				})
-			}		
-		}) 
-	});
-
+    if (button.text() != 'Loading…'){
+      button.text('Loading…')
+      insta_container.instagram({
+          next_url : insta_next_url
+        , show : 18
+        , onComplete : function(photos, data) {
+          insta_next_url = data.pagination.next_url
+          button.text(text)
+        }
+      })
+    }		
+  }) 
+});
+```
 
 ## Options
 
@@ -100,9 +103,9 @@ Type: `Number`
 Default: `null`
 
 ### next_url
-You can populate this with the next url object (`pagination.next_url`) returned by the Instagram API.
+You can populate this with the next URL object (`pagination.next_url`) returned by the Instagram API.
 
-Type: `url`
+Type: `URL`
 
 Default: `null`
 
@@ -121,9 +124,3 @@ Called after the response from instagram API.
 Type: `Function`
 
 Default: `null`
-
-## Acknowledgements
-
-Thanks to [@dpvitt](http://twitter.com/dpvitt) for the initial implementation.
-
-Thanks to [@photomak](https://github.com/potomak/jquery-instagram) for the v0.2
