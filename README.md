@@ -21,18 +21,22 @@ Run the plugin
 ```javascript
 $(function() {
   $(".instagram").instagram({
-      hash: 'hfarm'
-    , clientId: 'your-client-id-here'
+      hash: 'love'
+    , clientId: 'YOUR-CLIENT-ID-HERE'
   });
 });
 ```
 
-An alternative method. This expects a div with class `instagram` and a `button`. When clicked, the button paginates through the search, allowing you to show more than the API limit of 20 photos.
+### Alternative method.
+
+This expects a div with class `instagram` and a `button` element.
+When clicked, the button paginates through the search, allowing you to show more than the API limit of 20 photos.
 
 ```html
 <div class="instagram"></div>
 <button>More</button>
 ```
+
 ```javascript
 $(function(){
   var
@@ -41,7 +45,7 @@ $(function(){
 
   insta_container.instagram({
       hash: 'hipster'
-    , clientId : 'xxxxxxx'
+    , clientId : 'YOUR-CLIENT-ID-HERE'
     , show : 18
     , onComplete : function (photos, data) {
       insta_next_url = data.pagination.next_url
@@ -68,19 +72,60 @@ $(function(){
 });
 ```
 
+## Authentication
+
+You can obtain a client id registering a new Instagram API client app at http://instagr.am/developer/register/
+
 ## Options
 
 ### hash
 
 Search recent photos tagged with `hash`.
+See also http://instagram.com/developer/endpoints/tags/#get_tags_media_recent
+
+Authentication: `clientId` required
 
 Type: `String`
 
 Default: `null`
 
+### userId
+
+Search recent by user `userId`.
+See also http://instagram.com/developer/endpoints/users/#get_users_media_recent
+
+Authentication: `accessToken` required.
+
+Type: `String`
+
+Default: `null`
+
+### locationId
+
+Search recent from location `locationId`.
+See also http://instagram.com/developer/endpoints/locations/#get_locations_media_recent
+
+Authentication: `clientId` required.
+
+Type: `String`
+
+Default: `null`
+
+### search
+
+Search for media in a given area.
+See also http://instagram.com/developer/endpoints/media/#get_media_search
+
+Authentication: `clientId` required.
+
+Type: `Object`
+
+Default: `null`
+
 ### accessToken
 
-OAuth 2 access token (see: [http://instagram.com/developer/auth/](http://instagram.com/developer/auth/)).
+OAuth 2 access token.
+See also http://instagram.com/developer/auth/
 
 Type: `String`
 
@@ -89,6 +134,7 @@ Default: `null`
 ### clientId
 
 OAuth 2 client application id.
+See also http://instagram.com/developer/auth/
 
 Type: `String`
 

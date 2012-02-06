@@ -4,6 +4,8 @@
         apiEndpoint = "https://api.instagram.com/v1",
         settings = {
             hash: null
+          , userId: null
+          , locationId: null
           , search: null
           , accessToken: null
           , clientId: null
@@ -33,13 +35,21 @@
         );
     }
     
+    function createEmptyElement() {
+      return $('<div>')
+        .addClass('instagram-placeholder')
+        .attr('id', 'empty')
+        .append($('<p>').html('No photos for this query'));
+    }
+    
     function composeRequestURL() {
 
       var url = apiEndpoint,
           params = {};
       
-      if (settings.next_url != null)
-      	return settings.next_url
+      if (settings.next_url != null) {
+        return settings.next_url;
+      }
 
       if(settings.hash != null) {
         url += "/tags/" + settings.hash + "/media/recent";
@@ -51,6 +61,12 @@
         settings.search.max_timestamp != null && (params.max_timestamp = settings.search.max_timestamp);
         settings.search.min_timestamp != null && (params.min_timestamp = settings.search.min_timestamp);
         settings.search.distance != null && (params.distance = settings.search.distance);
+      }
+      else if(settings.userId != null) {
+        url += "/users/" + settings.userId + "/media/recent";
+      }
+      else if(settings.locationId != null) {
+        url += "/locations/" + settings.locationId + "/media/recent";
       }
       else {
         url += "/media/popular";
@@ -74,11 +90,16 @@
       cache: false,
       url: composeRequestURL(),
       success: function(res) {
+        var length = typeof res.data != 'undefined' ? res.data.length : 0;
+        var limit = settings.show != null && settings.show < length ? settings.show : length;
         
-        var limit = settings.show == null ? res.data.length : settings.show;
-        
-        for(var i = 0; i < limit; i++) {
-          that.append(createPhotoElement(res.data[i]));
+        if(limit > 0) {
+          for(var i = 0; i < limit; i++) {
+            that.append(createPhotoElement(res.data[i]));
+          }
+        }
+        else {
+          that.append(createEmptyElement());
         }
 
         settings.onComplete != null && typeof settings.onComplete == 'function' && settings.onComplete(res.data, res);
