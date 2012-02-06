@@ -1,0 +1,10 @@
+.instagram {
+	overflow: hidden;
+	width: 775px;
+	margin: 0 auto;
+}
+
+.instagram-placeholder {
+	float: left;
+	margin-right: 5px;
+}
