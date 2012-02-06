@@ -49,19 +49,20 @@
   <script>
     $(document).ready(function() {
       var clientId = 'baee48560b984845974f6b85a07bf7d9';
-      $(".instagram_tag").instagram({
-        hash: 'love',
+      
+      $(".instagram.tag").instagram({
+        hash: 'hipster',
         show: 5,
         clientId: clientId
       });
       
-      $(".instagram_location").instagram({
+      $(".instagram.location").instagram({
         locationId: '514276',
         show: 5,
         clientId: clientId
       });
       
-      $(".instagram_search").instagram({
+      $(".instagram.search").instagram({
         search: {
           lat: 48.858844,
           lng: 2.294351
@@ -99,13 +100,13 @@
     <p>A simple jQuery plugin to show a list of Instagram photos.</p>
     
     <p>Instagram photos tagged with #love.</p>
-    <div class="instagram_love"></div>
+    <div class="instagram tag"></div>
     
     <p>Instagram photos at location 514276.</p>
-    <div class="instagram_location"></div>
+    <div class="instagram location"></div>
     
     <p>Instagram photos at position (48.858844, 2.294351).</p>
-    <div class="instagram_search"></div>
+    <div class="instagram search"></div>
 
 <h2>License</h2>
 <pre>Copyright (c) 2011 Giovanni Cappellotto, http://www.focustheweb.com/
