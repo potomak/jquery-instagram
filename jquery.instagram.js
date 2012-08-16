@@ -15,11 +15,24 @@
           , maxId: null
           , minId: null
           , next_url: null
+          , image_size: null
         };
         
     options && $.extend(settings, options);
     
     function createPhotoElement(photo) {
+      var image_url = photo.images.thumbnail.url;
+      
+      if (settings.image_size == 'low_resolution') {
+        image_url = photo.images.low_resolution.url;
+      }
+      else if (settings.image_size == 'thumbnail') {
+        image_url = photo.images.thumbnail.url;
+      }
+      else if (settings.image_size == 'standard_resolution') {
+        image_url = photo.images.standard_resolution.url;
+      }
+
       return $('<div>')
         .addClass('instagram-placeholder')
         .attr('id', photo.id)
@@ -30,7 +43,7 @@
             .append(
               $('<img>')
                 .addClass('instagram-image')
-                .attr('src', photo.images.thumbnail.url)
+                .attr('src', image_url)
             )
         );
     }
