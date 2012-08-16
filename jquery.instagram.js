@@ -89,6 +89,8 @@
       settings.clientId != null && (params.client_id = settings.clientId);
       settings.minId != null && (params.min_id = settings.minId);
       settings.maxId != null && (params.max_id = settings.maxId);
+      
+      params.count = 100;
 
       url += "?" + $.param(params)
       
