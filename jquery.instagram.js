@@ -108,8 +108,6 @@
         var length = typeof res.data != 'undefined' ? res.data.length : 0;
         var limit = settings.show != null && settings.show < length ? settings.show : length;
         
-        console.log(limit);
-        
         if (limit > 0) {
           for (var i = 0; i < limit; i++) {
             that.append(createPhotoElement(res.data[i]));
