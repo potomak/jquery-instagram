@@ -149,11 +149,21 @@ Type: `Number`
 Default: `null`
 
 ### next_url
+
 You can populate this with the next URL object (`pagination.next_url`) returned by the Instagram API.
 
 Type: `URL`
 
 Default: `null`
+
+### image_size
+
+Image size to display.
+Choose one between `'low_resolution'`, `'thumbnail'` or `'standard_resolution'`.
+
+Type: `String`
+
+Default: `'thumbnail'`
 
 ### onLoad
 
