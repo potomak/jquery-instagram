@@ -1,3 +1,11 @@
+/*
+ * Instagram jQuery plugin
+ * v0.2.1
+ * http://potomak.github.com/jquery-instagram/
+ * Copyright (c) 2012 Giovanni Cappellotto
+ * Licensed MIT
+ */
+
 (function ($){
   $.fn.instagram = function (options) {
     var that = this,
