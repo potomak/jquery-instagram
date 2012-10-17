@@ -148,6 +148,8 @@ Type: `Number`
 
 Default: `null`
 
+**Note:** Instagram is filtering out private users' photos at read-time, so you won't always get the full number of photos in the count, see also https://github.com/potomak/jquery-instagram/issues/14 and https://groups.google.com/d/msg/instagram-api-developers/nKik4i8OYhw/ENu79JbcBAEJ
+
 ### next_url
 
 You can populate this with the next URL object (`pagination.next_url`) returned by the Instagram API.
