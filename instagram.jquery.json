@@ -1,0 +1,24 @@
+{
+  "name": "instagram",
+  "title": "jQuery Instagram",
+  "description": "Select and show a list of Instagram photos.",
+  "keywords": ["instagram", "photo", "picture", "api"],
+  "version": "0.2.2",
+  "author": {
+    "name": "Giovanni Cappellotto",
+    "url": "http://www.focustheweb.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/potomak/jquery-instagram/LICENSE"
+    }
+  ],
+    "bugs": "https://github.com/potomak/jquery-instagram/issues",
+    "homepage": "http://potomak.github.com/jquery-instagram",
+    "docs": "https://github.com/potomak/jquery-instagram",
+    "download": "https://github.com/potomak/jquery-instagram",
+    "dependencies": {
+      "jquery": ">=1.4.2"
+    }
+}
