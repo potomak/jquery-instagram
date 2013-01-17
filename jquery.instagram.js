@@ -24,6 +24,7 @@
           , minId: null
           , next_url: null
           , image_size: null
+          , photoLink: true
         };
         
     options && $.extend(settings, options);
@@ -41,19 +42,21 @@
         image_url = photo.images.standard_resolution.url;
       }
 
+      var innerHtml = $('<img>')
+        .addClass('instagram-image')
+        .attr('src', image_url);
+
+      if (settings.photoLink) {
+        innerHtml = $('<a>')
+          .attr('target', '_blank')
+          .attr('href', photo.link)
+          .append(innerHtml);
+      }
+
       return $('<div>')
         .addClass('instagram-placeholder')
         .attr('id', photo.id)
-        .append(
-          $('<a>')
-            .attr('target', '_blank')
-            .attr('href', photo.link)
-            .append(
-              $('<img>')
-                .addClass('instagram-image')
-                .attr('src', image_url)
-            )
-        );
+        .append(innerHtml);
     }
     
     function createEmptyElement() {
