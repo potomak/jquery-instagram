@@ -72,6 +72,10 @@ $(function(){
 });
 ```
 
+### Note about pagination
+
+Pagination doesn't work for requests to `/media/search`, see https://github.com/potomak/jquery-instagram/issues/35.
+
 ## Authentication
 
 You can obtain a client id registering a new Instagram API client app at http://instagram.com/developer/clients/register/
