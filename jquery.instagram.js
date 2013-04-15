@@ -25,6 +25,7 @@
           , next_url: null
           , image_size: null
           , photoLink: true
+          , showCaption: false
         };
         
     options && $.extend(settings, options);
@@ -51,6 +52,13 @@
           .attr('target', '_blank')
           .attr('href', photo.link)
           .append(innerHtml);
+      }
+
+      if (settings.showCaption) {
+          var captionElm = $('<span>')
+            .addClass('instagram-caption')
+            .text(photo.caption.text);
+          innerHtml.append(captionElm);
       }
 
       return $('<div>')
