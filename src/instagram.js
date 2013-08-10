@@ -9,69 +9,42 @@
 (function($) {
 
   function composeRequest(options) {
+    var url = 'https://api.instagram.com/v1';
+    var data = {};
+
     if (options.accessToken == null && options.clientId == null) {
       throw 'You must provide an access token or a client id';
     }
 
+    data = $.extend(data, {
+      access_token: options.accessToken,
+      client_id: options.clientId,
+      count: options.count
+    });
+
     if (options.url != null) {
-      return {url: options.url, data: {}};
+      url = options.url;
     }
-
-    var url = 'https://api.instagram.com/v1';
-    var data = {};
-
-    if (options.hash != null) {
+    else if (options.hash != null) {
       url += '/tags/' + options.hash + '/media/recent';
     }
     else if (options.search != null) {
       url += '/media/search';
-      data.lat = options.search.lat;
-      data.lng = options.search.lng;
-
-      if (options.search.maxTimestamp != null) {
-        data.max_timestamp = options.search.maxTimestamp;
-      }
-
-      if (options.search.minTimestamp != null) {
-        data.min_timestamp = options.search.minTimestamp;
-      }
-
-      if (options.search.distance != null) {
-        data.distance = options.search.distance;
-      }
+      data = $.extend(data, options.search);
     }
     else if (options.userId != null) {
       if (options.accessToken == null) {
         throw 'You must provide an access token';
       }
-
       url += '/users/' + options.userId + '/media/recent';
     }
-    else if (options.locationId != null) {
-      url += '/locations/' + options.locationId + '/media/recent';
+    else if (options.location != null) {
+      url += '/locations/' + options.location.id + '/media/recent';
+      delete options.location.id;
+      data = $.extend(data, options.location);
     }
     else {
       url += '/media/popular';
-    }
-    
-    if (options.accessToken != null) {
-      data.access_token = options.accessToken;
-    }
-    
-    if (options.clientId != null) {
-      data.client_id = options.clientId;
-    }
-    
-    if (options.minId != null) {
-      data.min_id = options.minId;
-    }
-    
-    if (options.maxId != null) {
-      data.max_id = options.maxId;
-    }
-    
-    if (options.count != null) {
-      data.count = options.count;
     }
     
     return {url: url, data: data};
@@ -99,14 +72,12 @@
   $.fn.instagram.defaults = {
     accessToken: null,
     clientId: null,
+    count: null,
+    url: null,
     hash: null,
     userId: null,
-    locationId: null,
-    search: null,
-    count: null,
-    maxId: null,
-    minId: null,
-    url: null
+    location: null,
+    search: null
   };
 
 }(jQuery));

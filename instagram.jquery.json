@@ -22,5 +22,7 @@
   "dependencies": {
     "jquery": "*"
   },
-  "keywords": ["instagram", "photo", "picture", "api"]
+  "keywords": ["instagram", "photo", "picture", "api"],
+  "docs": "https://github.com/potomak/jquery-instagram",
+  "download": "https://github.com/potomak/jquery-instagram"
 }
