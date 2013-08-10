@@ -32,42 +32,71 @@
   <link rel="stylesheet" href="jquery.instagram.css"  type="text/css" />
   
   <script src="//code.jquery.com/jquery-1.4.2.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.2.2/jquery.instagram.min.js"></script>
+  <script src="//rawgithub.com/potomak/jquery-instagram/master/dist/instagram.min.js"></script>
 
   <script type="text/javascript">
   /* <![CDATA[ */
-      (function() {
-          var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
-          s.type = 'text/javascript';
-          s.async = true;
-          s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
-          t.parentNode.insertBefore(s, t);
-      })();
+    (function() {
+      var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+      s.type = 'text/javascript';
+      s.async = true;
+      s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+      t.parentNode.insertBefore(s, t);
+    })();
   /* ]]> */
   </script>
   
   <script>
+    function createPhotoElement(photo) {
+      var innerHtml = $('<img>')
+        .addClass('instagram-image')
+        .attr('src', photo.images.thumbnail.url);
+
+      innerHtml = $('<a>')
+        .attr('target', '_blank')
+        .attr('href', photo.link)
+        .append(innerHtml);
+
+      return $('<div>')
+        .addClass('instagram-placeholder')
+        .attr('id', photo.id)
+        .append(innerHtml);
+    }
+
+    function didLoadInstagram(event, response) {
+      var that = this;
+
+      $.each(response.data, function(i, photo) {
+        $(that).append(createPhotoElement(photo));
+      });
+    }
+
     $(document).ready(function() {
       var clientId = 'baee48560b984845974f6b85a07bf7d9';
       
-      $(".instagram.tag").instagram({
+      $('.instagram.tag').on('didLoadInstagram', didLoadInstagram);
+      $('.instagram.tag').instagram({
         hash: 'hipster',
-        show: 5,
+        count: 5,
         clientId: clientId
       });
       
-      $(".instagram.location").instagram({
-        locationId: '514276',
-        show: 5,
+      $('.instagram.location').on('didLoadInstagram', didLoadInstagram);
+      $('.instagram.location').instagram({
+        location: {
+          id: 514276
+        },
+        count: 5,
         clientId: clientId
       });
       
-      $(".instagram.search").instagram({
+      $('.instagram.search').on('didLoadInstagram', didLoadInstagram);
+      $('.instagram.search').instagram({
         search: {
           lat: 48.858844,
           lng: 2.294351
         },
-        show: 5,
+        count: 5,
         clientId: clientId
       });
     });
