@@ -78,6 +78,7 @@ Default: `null`
 
 Parameters:
 
+* `id` Location id (required).
 * `min_timestamp` Return media after this UNIX timestamp.
 * `max_timestamp` Return media before this UNIX timestamp.
 * `min_id` Return media before this `min_id`.
