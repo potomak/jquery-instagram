@@ -49,8 +49,6 @@ In your `application.js` you will need to add this line:
 
     //= require jquery.instagram
 
-NOTE: this is a jQuery plugin so you will also need jQuery library.
-
 ## Documentation
 
 ### Authentication
