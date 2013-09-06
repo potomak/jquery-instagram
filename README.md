@@ -32,6 +32,23 @@ jQuery(function($) {
 </script>
 ```
 
+### For Rails developers
+
+You can use "instagramjs-rails" gem by bodrovis (https://github.com/bodrovis/instagramjs-rails)
+to easily add Instagram.js to your projects.
+
+Add this line to your application's Gemfile:
+
+    gem 'instagramjs-rails'
+
+And then execute:
+
+    $ bundle
+
+In your `application.js` you will need to add this line:
+
+    //= require jquery.instagram
+
 ## Documentation
 
 ### Authentication
