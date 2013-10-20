@@ -1,0 +1,30 @@
+{
+  "name": "jquery-instagram",
+  "description": "Instagram jQuery plugin",
+  "author": {
+    "name": "Giovanni Cappellotto",
+    "email": "potomak84@gmail.com"
+  },
+  "languages": ["javascript"],
+  "version": "0.3",
+  "keywords": ["javascript", "instagram", "jquery"],
+  "homepage": "http://potomak.github.io/jquery-instagram/",
+  "paypal_email": "potomak84@gmail.com",
+  "donation_packages": [
+    {
+      "name": "Fan",
+      "description": "Show you like jquery-instagram plugin",
+      "amount": "5.00"
+    },
+    {
+      "name": "Supporter",
+      "description": "You use jquery-instagram everyday",
+      "amount": "20.00"
+    },
+    {
+      "name": "Lover",
+      "description": "You love jquery-instagram and want to show all your appreciation",
+      "amount": "50,00"
+    }
+  ]
+}
