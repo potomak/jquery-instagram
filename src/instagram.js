@@ -17,9 +17,9 @@
     }
 
     data = $.extend(data, {
-      access_token: options.accessToken,
-      client_id: options.clientId,
-      count: options.count
+      access_token: options.accessToken || '',
+      client_id: options.clientId || '',
+      count: options.count || ''
     });
 
     if (options.url != null) {
