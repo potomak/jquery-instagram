@@ -2,7 +2,7 @@
   "name": "instagram",
   "title": "jQuery Instagram",
   "description": "Select and show a list of Instagram photos.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "http://potomak.github.com/jquery-instagram",
   "author": {
     "name": "Giovanni Cappellotto",

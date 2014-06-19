@@ -249,6 +249,10 @@ $('.instagram').instagram({
 
 ## Release History
 
+### 0.3.1
+
+Add options default values, see [#52](https://github.com/potomak/jquery-instagram/pull/52).
+
 ### 0.3.0
 
 Plugin redesing.

@@ -1,6 +1,6 @@
 {
   "name": "jquery-instagram",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Select and show a list of Instagram photos.",
   "main": "dist/instagram.min.js",
   "license": "MIT",
@@ -10,7 +10,7 @@
   "ignore" : [
     "test/",
     ".gitignore",
-    "gruntfile.js",
+    "Gruntfile.js",
     "package.json",
     "CONTRIBUTING.md",
     "sourcelover.json",
