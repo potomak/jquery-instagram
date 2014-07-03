@@ -32,6 +32,14 @@ jQuery(function($) {
 </script>
 ```
 
+### CDN
+
+Production version: [//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js](//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.min.js)
+
+Development version: [//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.js](//cdnjs.cloudflare.com/ajax/libs/jquery-instagram/0.3.1/instagram.js)
+
+Note: please don't use RawGit as a CDN, see [The naughtiness score](https://medium.com/@yaypie/the-naughtiness-score-9a61872c61cd) for more info about this issue.
+
 ### For Rails developers
 
 You can use "instagramjs-rails" gem by bodrovis (https://github.com/bodrovis/instagramjs-rails)
