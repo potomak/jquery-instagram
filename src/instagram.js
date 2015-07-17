@@ -32,6 +32,12 @@
       url += '/media/search';
       data = $.extend(data, options.search);
     }
+    else if (options.liked != null) {
+      if (options.accessToken == null) {
+        throw 'You must provide an access token';
+      }
+      url += '/users/self/media/liked';
+    }
     else if (options.userId != null) {
       if (options.accessToken == null) {
         throw 'You must provide an access token';
@@ -76,6 +82,7 @@
     url: null,
     hash: null,
     userId: null,
+    liked: null,
     location: null,
     search: null
   };
