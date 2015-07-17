@@ -1,6 +1,6 @@
-/*! jQuery Instagram - v0.3.1 - 2015-07-17
+/*! jQuery Instagram - v0.3.1 - 2014-06-19
 * http://potomak.github.com/jquery-instagram
-* Copyright (c) 2015 Giovanni Cappellotto; Licensed MIT */
+* Copyright (c) 2014 Giovanni Cappellotto; Licensed MIT */
 (function($) {
 
   function composeRequest(options) {
@@ -26,12 +26,6 @@
     else if (options.search != null) {
       url += '/media/search';
       data = $.extend(data, options.search);
-    }
-    else if (options.liked != null) {
-      if (options.accessToken == null) {
-        throw 'You must provide an access token';
-      }
-      url += '/users/self/media/liked';
     }
     else if (options.userId != null) {
       if (options.accessToken == null) {
@@ -77,7 +71,6 @@
     url: null,
     hash: null,
     userId: null,
-    liked: null,
     location: null,
     search: null
   };
