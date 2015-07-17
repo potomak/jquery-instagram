@@ -129,6 +129,18 @@ Parameters:
 * `max_timestamp` A unix timestamp. All media returned will be taken earlier than this timestamp.
 * `distance` Default is 1km (`distance` = 1000), max distance is 5km.
 
+#### liked
+
+Get media 'liked' by the current authenticated user.
+
+See https://instagram.com/developer/endpoints/users/#get_users_feed_liked
+
+Authentication: `accessToken` required.
+
+Type: `String`
+
+Default: `null`
+
 #### accessToken
 
 OAuth 2 access token.
